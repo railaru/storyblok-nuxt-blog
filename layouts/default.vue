@@ -32,5 +32,6 @@ body {
 
 .container {
   margin: 0 auto;
+  @apply px-4;
 }
 </style>

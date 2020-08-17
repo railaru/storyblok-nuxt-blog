@@ -16,25 +16,27 @@ import PostPreview from './../components/Blog/PostPreview'
 
 export default {
   components: { PostPreview },
-  data() {
-    return {
-      posts: [
-        {
-          id: 'a-new-beginning',
-          title: 'A new beginning',
-          previewText: "This will be awesome don't miss it",
-          thumbnailUrl:
-            'https://images.unsplash.com/photo-1527443195645-1133f7f28990?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-        {
-          id: 'a-second-beginning',
-          title: 'A second beginning',
-          previewText: "This will be awesome don't miss it",
-          thumbnailUrl:
-            'https://images.unsplash.com/photo-1527443195645-1133f7f28990?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-        },
-      ],
-    }
+  asyncData(context) {
+    return context.app.$storyapi
+      .get('cdn/stories', {
+        version: 'draft',
+        starts_with: 'blog/',
+      })
+      .then((res) => {
+        return {
+          posts: res.data.stories.map((bp) => {
+            return {
+              id: bp.slug,
+              title: bp.content.title,
+              previewText: bp.content.summary,
+              thumbnailUrl: bp.content.thumbnail,
+            }
+          }),
+        }
+      })
+      .catch((err) => {
+        throw new Error(err)
+      })
   },
 }
 </script>
