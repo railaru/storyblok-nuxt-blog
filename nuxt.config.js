@@ -71,6 +71,7 @@ export default {
         cacheProvider: 'memory',
       },
     ],
+    '@nuxt/http',
   ],
   /*
    ** Axios module configuration

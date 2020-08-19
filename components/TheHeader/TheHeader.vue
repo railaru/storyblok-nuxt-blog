@@ -1,15 +1,19 @@
 <template>
-  <header class="main-header">
+  <header class="main-header p-4">
     <nav class="main-nav">
-      <ul class="nav-links p-4">
+      <ul class="nav-links">
         <nuxt-link to="/" tag="li" class="mr-4"
           ><a class="nav-link">All posts</a></nuxt-link
         >
         <nuxt-link to="/about" tag="li" class="mr-4"
           ><a class="nav-link">About</a></nuxt-link
         >
+        <nuxt-link to="/products" tag="li" class="mr-4"
+          ><a class="nav-link">Products</a></nuxt-link
+        >
       </ul>
     </nav>
+    <nuxt-link class="nav-link" to="/basket">Basket: 0</nuxt-link>
   </header>
 </template>
 
@@ -21,6 +25,9 @@
   width: 100%;
   background: #444;
   color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .nav-links {
   display: flex;
