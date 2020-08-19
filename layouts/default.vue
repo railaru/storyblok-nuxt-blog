@@ -3,7 +3,7 @@
     <TheHeader />
     <main class="main-content">
       <div class="container">
-        <Nuxt />
+        <Nuxt keep-alive />
       </div>
     </main>
   </div>
