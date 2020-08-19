@@ -6,7 +6,7 @@ export const mutations = {
   add(state, payload) {
     state.list.push(payload)
   },
-  remove(state, { item }) {
-    state.list.splice(state.list.indexOf(item), 1)
+  remove(state, product) {
+    state.list.splice(state.list.indexOf(product), 1)
   },
 }
